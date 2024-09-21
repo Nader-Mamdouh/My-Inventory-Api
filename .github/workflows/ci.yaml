@@ -1,0 +1,44 @@
+name: Continuous Integration
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  DB_NAME: test
+  DBUser: root
+  DBPassword: asdf12345@
+
+jobs:
+  run_code_checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout Repo
+        uses: actions/checkout@v2
+
+      # Set up MySQL service
+      - name: Set up MySQL
+        run: |
+          sudo service mysql start
+          sudo mysql -e "CREATE DATABASE $DB_NAME;" -u${{ env.DBUser }} -p${{ env.DBPassword }}
+
+      # Set up Go environment
+      - name: Set up Go
+        uses: actions/setup-go@v3
+        with:
+          go-version: "1.18"
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: go mod download
+
+      # Run Go tests
+      - name: Run Go Tests
+        run: go test ./...
+
+      # Run Linter
+      - name: Run Go Lint
+        run: go vet ./...
