@@ -7,7 +7,8 @@ on:
 
 env:
   DB_NAME: test
-  DBUser: root
+  DBUser: nadermamdouh # Replace with the new MySQL user
+  DBPassword: nadermamdouh123@ # Replace with the password for the new MySQL user
 
 jobs:
   run_code_checks:
@@ -18,11 +19,12 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      # Set up MySQL service and create the database
-      - name: Set up MySQL
+      # Set up MySQL service and create the database with the new user
+      - name: Set up MySQL and Create Database
         run: |
-          sudo service mysql start
-          sudo mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;" -u${{ env.DBUser }} -p${{ secrets.MYSQL_ROOT_PASSWORD }}
+          sudo /etc/init.d/mysql start
+          sudo mysql -e "ALTER USER '${{ env.DBUser }}'@'localhost' IDENTIFIED BY '${{ env.DBPassword }}';" -uroot -proot
+          sudo mysql -e "CREATE DATABASE ${{env.DB_NAME}};" -u${{ env.DBUser }} -p${{ env.DBPassword }}
 
       # Set up Go environment
       - name: Set up Go
