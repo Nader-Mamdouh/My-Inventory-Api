@@ -7,7 +7,7 @@ on:
 
 env:
   DB_NAME: test
-  DBUser: root # Replace with the new MySQL user
+  DBUser: nader # Replace with the new MySQL user
   DBPassword: asdf12345@ # Replace with the password for the new MySQL user
 
 jobs:

@@ -1,5 +1,5 @@
 package main
 
 const DBName="inventory"
-const DBUser="root"
+const DBUser="nader"
 const DBPassword="asdf12345@"
