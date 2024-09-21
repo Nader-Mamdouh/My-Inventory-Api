@@ -23,8 +23,9 @@ jobs:
       - name: Set up MySQL and Create Database
         run: |
           sudo /etc/init.d/mysql start
-          sudo mysql -e "ALTER USER '${{ env.DBUser }}'@'localhost' IDENTIFIED BY '${{ env.DBPassword }}';" -uroot -proot
-          sudo mysql -e "CREATE DATABASE ${{env.DB_NAME}};" -u${{ env.DBUser }} -p${{ env.DBPassword }}
+          sudo mysql -e "CREATE USER IF NOT EXISTS 'nadermamdouh'@'localhost' IDENTIFIED BY 'nadermamdouh123@';" -uroot -proot
+          sudo mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'nadermamdouh'@'localhost' WITH GRANT OPTION;" -uroot -proot
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS test;" -unadermamdouh -pnadermamdouh123@
 
       # Set up Go environment
       - name: Set up Go
