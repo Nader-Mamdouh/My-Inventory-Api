@@ -7,8 +7,8 @@ on:
 
 env:
   DB_NAME: test
-  DBUser: nadermamdouh # Replace with the new MySQL user
-  DBPassword: nadermamdouh123@ # Replace with the password for the new MySQL user
+  DBUser: root # Replace with the new MySQL user
+  DBPassword: asdf12345@ # Replace with the password for the new MySQL user
 
 jobs:
   run_code_checks:

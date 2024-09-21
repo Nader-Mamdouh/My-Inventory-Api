@@ -1,5 +1,5 @@
 package main
 
 const DBName="inventory"
-const DBUser="nadermamdouh"
-const DBPassword="nadermamdouh123@@"
+const DBUser="root"
+const DBPassword="asdf12345@"
