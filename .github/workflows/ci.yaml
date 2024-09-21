@@ -8,7 +8,6 @@ on:
 env:
   DB_NAME: test
   DBUser: root
-  DBPassword: asdf12345@
 
 jobs:
   run_code_checks:
@@ -19,11 +18,11 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      # Set up MySQL service
+      # Set up MySQL service and create the database
       - name: Set up MySQL
         run: |
           sudo service mysql start
-          sudo mysql -e "CREATE DATABASE $DB_NAME;" -u${{ env.DBUser }} -p${{ env.DBPassword }}
+          sudo mysql -e "CREATE DATABASE IF NOT EXISTS $DB_NAME;" -u${{ env.DBUser }} -p${{ secrets.MYSQL_ROOT_PASSWORD }}
 
       # Set up Go environment
       - name: Set up Go
