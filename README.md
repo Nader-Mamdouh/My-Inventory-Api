@@ -7,12 +7,7 @@ It supports standard CRUD operations and is designed to be efficient and secure.
 ## Table of Contents
 - [Features](#features)
 - [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
 - [API Endpoints](#api-endpoints)
-- [Running the Project](#running-the-project)
-- [Testing](#testing)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Features
 - Designed and implemented API endpoints for product management (Create, Read, Update, Delete).
@@ -28,10 +23,6 @@ It supports standard CRUD operations and is designed to be efficient and secure.
 - Gorilla Mux (for routing)
 - JSON (for data interchange)
 - Github Actions
-
-## Getting Started
-To run this project locally, follow these steps:
-
 
 ## API Endpoints
 - GET /products: Retrieve all products.
